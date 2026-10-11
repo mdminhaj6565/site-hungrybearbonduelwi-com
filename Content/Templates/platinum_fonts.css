@@ -1,0 +1,4 @@
+/* font stack fallback */
+:root{--body_font:'Open Sans',Arial,Helvetica,sans-serif;--header_font:'Roboto Slab',Georgia,serif}
+body{font-family:var(--body_font)}
+h1,h2,h3,h4,h5,h6{font-family:var(--header_font)}

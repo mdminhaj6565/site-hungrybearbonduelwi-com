@@ -1,0 +1,12 @@
+/* universal resets - Hungry Bear profile pages */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.55;color:#2b2b2b;background:#eef1f7}
+a{color:#00339E}
+a:hover{color:#1375E6}
+a:focus-visible,.bt:focus-visible{outline:3px solid #1375E6;outline-offset:2px}
+img{max-width:100%;height:auto;border:0}
+table{border-collapse:collapse}
+.fl{float:left}.fr{float:right}.cl{clear:left}.type100{width:100%}
+.dn{display:none}
+.fs::after,.fl.cl.type100::after,#basicInfo::after,#additionalInfo::after{content:"";display:table;clear:both}

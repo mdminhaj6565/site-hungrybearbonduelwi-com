@@ -1,0 +1,136 @@
+# invoke rewrite engine
+RewriteEngine On
+RewriteBase /
+
+Options -Indexes
+<IfModule mod_negotiation.c>
+	Options -MultiViews
+</IfModule>
+
+# Specific redirections
+RewriteRule ^index\.html$ / [L,R=301]
+RewriteCond %{QUERY_STRING} ^domain=hungrybearbonduelwi$
+RewriteRule ^Accessibility$ Accessibility_domain-hungrybearbonduelwi [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^aspxerrorpath=/Content/Templates/ajax-loader\.gif$
+RewriteRule ^$ aspxerrorpath-/Content/Templates/ajax-loader [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^aspxerrorpath=/favicon\.ico$
+RewriteRule ^$ aspxerrorpath-/favicon [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^aspxerrorpath=/robots\.txt$
+RewriteRule ^$ aspxerrorpath-/robots [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^g=1604855$
+RewriteRule ^oc/profile$ oc/profile_g-1604855 [L,R=301,QSD]
+
+# Create pretty URLs
+DirectorySlash Off
+
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ %1 [NC,L,R=301]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} (.*)/$
+RewriteRule ^(.*)/$ $1 [NC,L,R=301]
+
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^ %{REQUEST_URI}.html [NC,L]
+# End: Create pretty URLs
+
+# Redirect all extensions to html
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.shtml$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.phtml$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.jhtml$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.htm$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.php$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.aspx$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.asp$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.jsp$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.apk$ $1.html [L,NC,R=301]
+# End: Redirect all extensions to html
+
+# ==========================================================
+# SEO / performance / security additions
+# ==========================================================
+
+# Force HTTPS and the non-www hostname (matches rel=canonical)
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^(.*)$ https://hungrybearbonduelwi.com/$1 [L,R=301]
+
+# --- GZIP compression ---
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+    AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+    AddOutputFilterByType DEFLATE application/json application/xml application/rss+xml
+    AddOutputFilterByType DEFLATE image/svg+xml application/x-font-ttf font/woff font/woff2
+</IfModule>
+
+# --- Brotli, where available ---
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# --- Browser caching ---
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg           "access plus 1 year"
+    ExpiresByType image/png            "access plus 1 year"
+    ExpiresByType image/gif            "access plus 1 year"
+    ExpiresByType image/webp           "access plus 1 year"
+    ExpiresByType image/svg+xml        "access plus 1 year"
+    ExpiresByType image/x-icon         "access plus 1 year"
+    ExpiresByType text/css             "access plus 1 month"
+    ExpiresByType text/javascript      "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType font/woff2           "access plus 1 year"
+    ExpiresByType application/pdf      "access plus 1 month"
+    ExpiresByType text/html            "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|ttf|eot)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "public, max-age=2592000"
+    </FilesMatch>
+
+    # --- Security headers ---
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(self), microphone=(), camera=()"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+    Header unset X-Powered-By
+    Header unset Server
+</IfModule>
+
+# --- Correct MIME types ---
+<IfModule mod_mime.c>
+    AddType image/webp .webp
+    AddType font/woff2 .woff2
+    AddType application/manifest+json .webmanifest
+</IfModule>
+
+# --- Keep-alive ---
+<IfModule mod_headers.c>
+    Header set Connection keep-alive
+</IfModule>
+
+# --- Custom error page ---
+ErrorDocument 404 /404.html
+
+# --- Block access to sensitive files ---
+<FilesMatch "^\.(htaccess|htpasswd|env|git)">
+    Require all denied
+</FilesMatch>
+<FilesMatch "\.(xml|txt)$">
+    Require all granted
+</FilesMatch>

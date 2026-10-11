@@ -1,0 +1,16 @@
+/* Accessible text version - Hungry Bear Cafe & Catering */
+body{font-family:var(--body_font,Arial,Helvetica,sans-serif);font-size:17px;line-height:1.65;color:#222;background:#fff;overflow-wrap:break-word}
+#articleContainer{max-width:860px;margin:0 auto;padding:8px 16px 40px}
+#articleContainer > div{width:100%!important;max-width:100%}
+h1,h2,h3{font-family:var(--header_font,Georgia,serif);line-height:1.3;color:#00339E}
+h1{font-size:2rem;margin:.6em 0 .2em}
+h2{font-size:1.45rem;margin:1.1em 0 .4em}
+h3{font-size:1.15rem;margin:1em 0 .3em}
+a{color:#00339E;text-decoration:underline}
+a:hover{color:#1375E6}
+a:focus{outline:3px solid #00339E;outline-offset:2px}
+img{max-width:100%;height:auto}
+img.nav-logo{width:180px;height:180px;object-fit:contain;display:block;margin:8px 0 16px;border-radius:8px}
+hr{border:0;border-top:1px solid #d9dde6;margin:28px 0}
+ul{padding-left:1.4em}
+.address{white-space:normal}

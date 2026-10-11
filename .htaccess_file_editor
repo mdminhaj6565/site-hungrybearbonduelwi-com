@@ -1,0 +1,56 @@
+# invoke rewrite engine
+RewriteEngine On
+RewriteBase /scraping/files/live/hungrybearbonduelwi.com_hemalbdeee_gmail.com_w6juc8oxog/
+
+Options -Indexes
+<IfModule mod_negotiation.c>
+	Options -MultiViews
+</IfModule>
+
+# Specific redirections
+RewriteRule ^index\.html$ /scraping/files/live/hungrybearbonduelwi.com_hemalbdeee_gmail.com_w6juc8oxog/ [L,R=301]
+RewriteCond %{QUERY_STRING} ^domain=hungrybearbonduelwi$
+RewriteRule ^Accessibility$ /scraping/files/live/hungrybearbonduelwi.com_hemalbdeee_gmail.com_w6juc8oxog/Accessibility_domain-hungrybearbonduelwi [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^aspxerrorpath=/Content/Templates/ajax-loader\.gif$
+RewriteRule ^$ /scraping/files/live/hungrybearbonduelwi.com_hemalbdeee_gmail.com_w6juc8oxog/aspxerrorpath-/Content/Templates/ajax-loader [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^aspxerrorpath=/favicon\.ico$
+RewriteRule ^$ /scraping/files/live/hungrybearbonduelwi.com_hemalbdeee_gmail.com_w6juc8oxog/aspxerrorpath-/favicon [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^aspxerrorpath=/robots\.txt$
+RewriteRule ^$ /scraping/files/live/hungrybearbonduelwi.com_hemalbdeee_gmail.com_w6juc8oxog/aspxerrorpath-/robots [L,R=301,QSD]
+RewriteCond %{QUERY_STRING} ^g=1604855$
+RewriteRule ^oc/profile$ /scraping/files/live/hungrybearbonduelwi.com_hemalbdeee_gmail.com_w6juc8oxog/oc/profile_g-1604855 [L,R=301,QSD]
+
+# Create pretty URLs
+DirectorySlash Off
+
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ %1 [NC,L,R=301]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} (.*)/$
+RewriteRule ^(.*)/$ $1 [NC,L,R=301]
+
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^ %{REQUEST_URI}.html [NC,L]
+# End: Create pretty URLs
+
+# Redirect all extensions to html
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.shtml$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.phtml$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.jhtml$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.htm$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.php$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.aspx$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.asp$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.jsp$ $1.html [L,NC,R=301]
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)\.apk$ $1.html [L,NC,R=301]
+# End: Redirect all extensions to html

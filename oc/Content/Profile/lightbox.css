@@ -1,0 +1,2 @@
+/* lightbox disabled on static site - photo links open the full image */
+.lightboxOverlay,.lightbox{display:none!important}

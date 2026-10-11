@@ -1,0 +1,36 @@
+hungrybearbonduelwi.com — Content freshness + page display fixes (21 Sep 2026)
+=============================================================================
+Upload these files to the server root, keeping the same folders (overwrite).
+UI / design of the home page is unchanged.
+
+CONTENT
+- index.html: "Latest News" spring (Mar 2025) copy replaced with dated Fall 2026 update;
+  new Menu Highlights, Fish Fry Friday (#fishFryFriday) and Catering (#cateringDetails)
+  inside Services; Imagery (7-photo gallery), Posts (3 dated posts) and FAQ (8 Q&A +
+  FAQPage JSON-LD) were empty and are now filled; FAQ link in mobile menu + Contact;
+  WebPage schema dateModified; menu PDF links fixed (optimamedia -> OptimaMedia);
+  star-rating image alt fixed; deep links like /#fishFryFriday open the right section.
+- Accessibility_domain-hungrybearbonduelwi.html: news refreshed, Fish Fry link + text.
+- 404.html: 47 -> 98 words, links to menu, fish fry, catering, FAQ, hours.
+- oc/profile_g-1604855.html: wrong hours fixed (Mon closed, Sat 4 PM, Sun 2 PM),
+  "New Ownership" (2016) removed, new description, payment types, link to recent reviews.
+- sitemap.xml: lastmod 2026-09-21 for /, accessibility page, profile page.
+
+DISPLAY FIXES
+- Profile page: CSS files were empty stubs and 7 JS files were HTML error pages ->
+  new style.css / universal.css / lightbox.css + oc/Scripts/Profile/profile-static.js.
+  Self-loading iframe removed. No JS errors, no sideways scroll on mobile.
+- Accessibility page: accessibility.css rewritten, CSS now relative (was absolute URL).
+- oc/tos.html: readable layout, footer no longer overlaps text.
+- index.html: old ASP.NET AJAX calls (review modal, posts, expired 2025 banner) are
+  skipped on the static site (window.HB_STATIC); dead Previous/Next post buttons hidden.
+- aspxerrorpath-/Content/Templates/ajax-loader.html: content/ -> Content/ image paths.
+
+OPTIONAL CLEAN-UP ON SERVER
+- oc/Scripts/Profile/{googleAnalytics,jquery.barrating,jquery.detectmobilebrowser,
+  jquery.merchant_v-1.5,jquery.slides,lightbox-2.6.min,modernizr.custom}.js are HTML
+  error pages and are no longer referenced — safe to delete.
+
+PLEASE CONFIRM WITH THE OWNER
+- Breakfast served all day? - Catering for ~100 guests still right?
+- Whole pie orders / holiday catering bookings open? - Fish fry items still on menu?

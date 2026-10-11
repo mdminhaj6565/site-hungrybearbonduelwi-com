@@ -1,0 +1,89 @@
+/* Hungry Bear - business profile (/oc/profile_g-1604855) & terms (/oc/tos) */
+.wrapper{max-width:1100px;margin:24px auto;padding:0 16px;display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start}
+#main{flex:1 1 620px;min-width:0;background:#fff;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.08);padding:24px}
+#map{flex:0 1 330px;min-width:0;background:#fff;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.08);padding:20px}
+h1,#busName{font-size:1.7rem;line-height:1.25;color:#00339E;margin:0 0 8px}
+p{margin:0 0 10px}
+.bdr3{border-radius:6px}.sh4{box-shadow:0 1px 4px rgba(0,0,0,.15)}
+
+/* photos */
+#images{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}
+#images a{display:block}
+#images a.dn{display:none}
+#images img{width:100%;height:110px;object-fit:cover;display:block;border-radius:6px}
+#images img.main{grid-row:span 2;height:228px;object-fit:contain;background:#c9ccd6}
+#images a:first-child{grid-column:span 2;grid-row:span 2}
+#busDetails{float:left;width:55%;min-width:220px}
+#busDetails .basicInfo{padding:0}
+#busPhone{font-size:1.15rem;font-weight:bold}
+#slideShow{float:right;width:210px;max-width:40%;height:200px;position:relative;box-shadow:0 1px 4px rgba(0,0,0,.15)}
+#slideShow .slidesjs-container,#slideShow .slidesjs-control{width:100%!important;height:100%!important}
+#slideShow .slidesjs-slide{display:none;position:absolute;inset:0}
+#slideShow .slidesjs-slide.active{display:block}
+#slideShow img{width:100%;height:200px;object-fit:cover;display:block}
+
+.fs.dt{clear:both;padding-top:16px}
+#slogan{display:block;font-size:1.15rem;color:#00339E;margin-bottom:8px}
+#description{display:block}
+
+/* write testimonial */
+#busDetailOpts{margin-top:16px}
+.section20{margin:16px 0}
+.bt{display:inline-block;background:#00339E;color:#fff;padding:8px 16px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:.95rem;text-decoration:none;border:0}
+.bt:hover{background:#1375E6;color:#fff}
+#writeReviewBt{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+#writeReviewBt .fl{float:none;margin:0!important}
+#newReview,#reviewBg{display:none}
+
+/* reviews */
+#reviews{clear:both;border-top:1px solid #e3e6ee;margin-top:20px;padding-top:4px}
+#reviewContentHeading,#reviewContent{width:100%!important}
+#reviewContentHeading>div>div{float:none!important}
+#shareTable,.domainTable,#showMoreButton,#reviewContentHeading>div>div:last-child{display:none!important}
+#reviewTable{width:100%}
+#reviewTable td{padding:6px 0;vertical-align:top}
+tr.review td{border-bottom:1px solid #eef0f5}
+.reviewText{display:block;max-height:320px;overflow:auto;background:#f7f8fb;border-radius:6px;padding:10px 12px;margin-top:10px}
+.reviewAuthDate{color:#666;font-size:.9rem;margin:0}
+#ReviewRatersButton{margin-left:12px}
+tr.review .fl.cl.type100{display:flex;flex-wrap:wrap;align-items:center;float:none}
+tr.review .fl.cl.type100 .toggletarget{flex-basis:100%}
+
+/* sidebar: map, hours, info */
+#map_canvas{display:none}
+.map_options a{display:block;text-align:center;background:#00339E;color:#fff;padding:10px;border-radius:5px;text-decoration:none;font-weight:bold;margin-bottom:14px}
+.map_options a:hover{background:#1375E6}
+#largerMap a#CustomerBusinessViewLink{display:none!important}
+#additionalInfo b.basicInfo{display:block;margin-top:14px;color:#00339E}
+#additionalInfo p.basicInfo{margin:2px 0}
+#busHours2{float:none!important;width:100%}
+#hoursTable{width:auto;margin-top:4px}
+#hoursTable td.dash{padding:0 6px}
+#hoursTable td{padding:3px 4px 3px 0;font-size:.95rem}
+#hoursTable td.day{font-weight:bold;width:48px}
+
+/* footer */
+#footer{max-width:1100px;margin:0 auto 24px;padding:12px 16px;font-size:.85rem;color:#666;text-align:center}
+#footer a{margin-right:8px}
+
+/* lightbox (not used - images open directly) */
+.lightboxOverlay,.lightbox{display:none!important}
+
+/* ---------- /oc/tos terms page ---------- */
+body.tos-page{background:#fff}
+.tos-content{max-width:900px;margin:0 auto;padding:24px 16px;font-size:15px;line-height:1.65}
+.tos-content h1,.tos-content h2{color:#00339E}
+.tos-content::after{content:"";display:table;clear:both}
+body.tos-page #footer{clear:both}
+
+@media (max-width:760px){
+  .wrapper{margin:12px auto;gap:14px}
+  #main,#map{flex:1 1 100%;padding:16px}
+  #images{grid-template-columns:repeat(3,1fr)}
+  #images a:first-child{grid-column:span 3;grid-row:auto}
+  #images img.main{height:200px}
+  #images img{height:90px}
+  #busDetails{width:100%;float:none}
+  #slideShow{display:none!important}
+  h1,#busName{font-size:1.4rem}
+}

@@ -1,0 +1,30 @@
+# robots.txt for hungrybearbonduelwi.com
+User-agent: *
+Allow: /
+
+# Legacy ASP.NET error-path artefacts - no search value
+Disallow: /aspxerrorpath-
+Disallow: /oc/tos
+
+# Duplicate legal pages (canonical versions live under /Home/)
+Disallow: /Accessibility/TermsOfUse
+Disallow: /Accessibility/PrivacyPolicy
+
+# Framework directories
+Disallow: /Scripts/
+Disallow: /Content/Templates/
+Disallow: /bootstrap/
+Disallow: /ajax/
+Disallow: /api/
+
+# Let crawlers render the page properly
+Allow: /Content/Templates/*.css
+Allow: /Scripts/*.js
+
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+Sitemap: https://hungrybearbonduelwi.com/sitemap.xml

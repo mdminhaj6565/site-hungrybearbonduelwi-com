@@ -1,0 +1,54 @@
+# Specific redirections
+if ($args ~* ^domain=hungrybearbonduelwi$){ rewrite ^/Accessibility$ /Accessibility_domain-hungrybearbonduelwi? permanent; }
+if ($args ~* ^aspxerrorpath=/Content/Templates/ajax-loader\.gif$){ rewrite ^/$ /aspxerrorpath-/Content/Templates/ajax-loader? permanent; }
+if ($args ~* ^aspxerrorpath=/favicon\.ico$){ rewrite ^/$ /aspxerrorpath-/favicon? permanent; }
+if ($args ~* ^aspxerrorpath=/robots\.txt$){ rewrite ^/$ /aspxerrorpath-/robots? permanent; }
+if ($args ~* ^g=1604855$){ rewrite ^/oc/profile$ /oc/profile_g-1604855? permanent; }
+
+# Create pretty URLs
+rewrite ^/([^/]+)$ /$1.html last;
+rewrite ^/([^/]+)/([^/]+)$ /$1/$2.html last;
+rewrite ^/([^/]+)/([^/]+)/([^/]+)$ /$1/$2/$3.html last;
+rewrite ^/([^/]+)/([^/]+)/([^/]+)/([^/]+)$ /$1/$2/$3/$4.html last;
+rewrite ^/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)$ /$1/$2/$3/$4/$5.html last;
+rewrite ^/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)$ /$1/$2/$3/$4/$5/$6.html last;
+rewrite ^/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)$ /$1/$2/$3/$4/$5/$6/$7.html last;
+rewrite ^/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)$ /$1/$2/$3/$4/$5/$6/$7/$8.html last;
+rewrite ^/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)$ /$1/$2/$3/$4/$5/$6/$7/$8/$9.html last;
+rewrite ^/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)$ /$1/$2/$3/$4/$5/$6/$7/$8/$9/$10.html last;
+# End: Create pretty URLs
+
+# Redirect all extensions to html
+if ($is_args = ''){
+	rewrite ^([^.]*)\.shtml$ $1.html permanent;
+	rewrite ^([^.]*)\.phtml$ $1.html permanent;
+	rewrite ^([^.]*)\.jhtml$ $1.html permanent;
+	rewrite ^([^.]*)\.htm$ $1.html permanent;
+	rewrite ^([^.]*)\.php$ $1.html permanent;
+	rewrite ^([^.]*)\.aspx$ $1.html permanent;
+	rewrite ^([^.]*)\.asp$ $1.html permanent;
+	rewrite ^([^.]*)\.jsp$ $1.html permanent;
+	rewrite ^([^.]*)\.apk$ $1.html permanent;
+}
+# End: Redirect all extensions to html
+
+# ==========================================================
+# SEO / performance / security additions (nginx)
+# ==========================================================
+# gzip
+gzip on;
+gzip_vary on;
+gzip_min_length 256;
+gzip_types text/plain text/css text/xml text/javascript application/javascript application/json application/xml image/svg+xml;
+
+# caching
+location ~* \.(jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|ttf|eot)$ { expires 1y; add_header Cache-Control "public, immutable"; }
+location ~* \.(css|js)$ { expires 30d; add_header Cache-Control "public"; }
+
+# security headers
+add_header X-Content-Type-Options "nosniff" always;
+add_header X-Frame-Options "SAMEORIGIN" always;
+add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+
+error_page 404 /404.html;
