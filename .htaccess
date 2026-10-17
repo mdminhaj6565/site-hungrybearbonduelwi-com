@@ -20,6 +20,16 @@ RewriteRule ^$ aspxerrorpath-/robots [L,R=301,QSD]
 RewriteCond %{QUERY_STRING} ^g=1604855$
 RewriteRule ^oc/profile$ oc/profile_g-1604855 [L,R=301,QSD]
 
+# BEGIN Search Console fixes (2026-10-17)
+# Google crawled lower-case /optimamedia/... links; files live under /OptimaMedia/ (case-sensitive server)
+RewriteCond %{REQUEST_URI} !^/OptimaMedia/
+RewriteCond %{DOCUMENT_ROOT}/OptimaMedia/$1 -f
+RewriteRule ^optimamedia/(.+)$ /OptimaMedia/$1 [NC,L,R=301]
+# Old parking-page lander URL - gone for good
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^lander/?$ - [G,L]
+# END Search Console fixes
+
 # Create pretty URLs
 DirectorySlash Off
 
